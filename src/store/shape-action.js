@@ -30,7 +30,6 @@ export function loadShape(shapeId) {
   }
 }
 
-// Why not to bring only capacity result from the service? beacuse this is the only output that needs to return for the Html.     
 export function updateShape(valueToUpdate, shapeId) {
   // console.log(shapeId);
   return async (dispatch) => {

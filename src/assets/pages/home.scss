@@ -1,0 +1,79 @@
+.home {
+
+    gap: 30px;
+
+    // seedlings-nav   
+    // .seedlings-nav {
+    // visibility: hidden;
+
+    //     }
+
+
+    div {
+        width: 100%;
+    }
+
+    // div:nth-child(1)>:last-child {
+    //     margin-top: -90px;
+    //     // background-color: black;
+
+
+    // }
+
+    // App title
+    //     div>h1 {
+    // text-align: center;
+    // // margin-top: -80px;
+    // margin-bottom: 0px;
+    //     }
+
+
+    div>nav {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+        h2 {
+            color: $darkGray;
+        }
+
+        section {
+
+            label {
+                color: rgb(6, 98, 236);
+                // color:$greenTopHue;
+                
+            }
+           label:hover {
+                color: $greenTopHue;
+            
+            }
+
+        }
+
+    }
+
+    div>hr {
+        border-style: solid;
+        border-width: 0px 0px 3px 0px;
+        border-color: $greenLowHue;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    div>nav>img {
+
+        width: 50px;
+        height: 50px;
+        align-self: center;
+
+    }
+
+}

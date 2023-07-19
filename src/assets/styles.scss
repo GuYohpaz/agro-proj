@@ -1,0 +1,20 @@
+
+//SETUP
+@import '../../src/assets/setup/variables';
+@import '../../src/assets/setup/mixins.scss';
+@import '../../src/assets/setup/fonts.scss';
+
+
+// BASICS
+@import '../../src/assets/basics/base.scss';
+@import '../../src/assets/basics/layout.scss';
+@import '../../src/assets/basics/helpers.scss';
+
+//CMPS
+@import'../../src/assets/cmp/_shape-m.scss';
+@import'../../src/assets/cmp/_seedling-m.scss';
+@import'../../src/assets/cmp/_bags-m.scss';
+@import'../../src/assets/cmp/_main-header.scss';
+
+//PAGES
+@import'../assets/pages/home.scss';

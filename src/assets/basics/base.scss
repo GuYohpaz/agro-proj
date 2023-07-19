@@ -1,0 +1,117 @@
+// * {
+//     margin: 0;
+// }
+
+
+body {
+    margin: 0;
+    padding: 0;
+    // font-family: ;
+}
+
+
+ul,pre {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    font-family: Fb Tubic regular;
+    // 0 opacity
+    background-color: rgba(255, 255, 255, 0);
+ 
+    // width: 40px;
+    // height: 40px;
+    // border-style: solid;
+    // border-width: 0px 0px 3px 0px;
+    // align-self: flex-end;
+
+}
+
+// ^, x
+p {
+
+    margin-top: 0;
+
+}
+
+
+//FontsSetUp
+
+// *, /, +, - ... 
+pre {
+
+    font-family: Fb Tubic bold;
+    align-self: center;
+
+}
+
+option {
+
+    font-size: 1.1rem;
+    font-family: Fb Tubic light;
+
+}
+
+// Pi
+span {
+    // align-self: center;
+
+    // align-self: flex-end;
+    // font-family: Fb Tubic regular;
+    font-family: basis italic light con;
+
+    font-size: 0.7rem;
+
+}
+
+
+
+h1 {
+
+    font-size: 2.7rem;
+    font-family: Fb Tubic bold;
+}
+
+
+h2 {
+
+    font-size: 1.3rem;
+    font-family: Fb Tubic bold;
+    // text-align: left;
+}
+
+
+h3 {
+
+    font-size: 1.1rem;
+    font-family: basis italic light con;
+}
+
+h4 {
+
+ 
+    font-size: 0.8rem;
+    // align-self: flex-end;
+    margin-bottom: 0;
+    font-family: basis italic light con;
+}
+
+h5 {
+    font-size: 0.7rem;
+    font-family: basis italic extra light con;
+}
+
+
+h6 {
+    font-size: 0.6rem;
+    font-family: basis italic light con;
+}
+
+label {
+
+    font-size: 0.9rem;
+    font-family: Fb Tubic light;
+}
+
+

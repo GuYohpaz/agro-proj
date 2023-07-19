@@ -1,0 +1,125 @@
+.shapes-container {
+
+    div {
+
+        // Shapes search filter nest
+        article {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding-left: 10px;
+            // padding-right: 10px;
+            height: 45px;
+
+            input {
+
+                border: none;
+                font-size: 1.3rem;
+                min-width: 88%;
+            }
+
+            // input:focus-visible{
+
+            //     // background-color: black;
+            //     // border-color: green;
+
+            //     border:none;
+            //     // border: 1px;
+            //     // background-color: black;
+            // }
+
+            input::placeholder {
+                font-family: Fb Tubic bold;
+                color: black;
+            }
+
+
+            img {
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+
+
+            }
+        }
+
+        option {
+            width: 100%;
+            // padding-right: 100px;
+
+            padding: 20px 0px 20px 0px;
+            border: solid;
+            border-width: 0px 0px 2px 0px;
+            border-color: $greenLowHue;
+
+        }
+
+        option:hover {
+            color: $greenTopHue;
+            // padding-left: 20px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        //
+        .shapesEq-box {
+            // background-color: black;
+
+            div {
+
+
+
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0;
+                    margin: 0;
+                    height: 40px;
+                    // background-color: black;
+
+
+
+                    div {
+                        // margin-right: 35px;
+                        // margin-bottom: 25px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 20px;
+                        // justify-content: space-between;
+                        //  background-color: black;
+
+
+                        input {
+
+                            width: 60px;
+                            height: 40px;
+                            border-style: solid;
+                            border-width: 0px 0px 3px 0px;
+                        }
+
+                        // ^
+
+                        button {
+                            //xxxx
+                            margin-left: 50px;
+
+                            border: none;
+                        }
+
+
+                    }
+
+                    h3 {
+                        padding: 5px 5px;
+                        background-color: $greenLowHue ;
+                        visibility: hidden;
+
+                    }
+
+                }
+            }
+        }
+    }
+
+
+}

@@ -1,5 +1,4 @@
 import { storageService } from './async-storage.service.js'
-import { bagService } from './bag-service.js'
 
 const STORAGE_KEY = 'seedling'
 
@@ -15,20 +14,22 @@ export const seedlingService = {
 
 window.cs = seedlingService
 
-
+// initial db state = []
 async function query() {
 
     return storageService.query(STORAGE_KEY)
         .then((seedlings) => {
+
             if (!seedlings || !seedlings.length) {
                 storageService.postMany(STORAGE_KEY, [])
                 seedlings = []
             }
+
             return seedlings
 
         })
-
 }
+
 
 async function getById(seedlingId) {
     // console.log(seedlingId);
@@ -40,25 +41,27 @@ async function getById(seedlingId) {
 async function save(seedling) {
     // console.log(seedling);
     var savedSeedling
+
     if (seedling._id) {
+
         savedSeedling = await storageService.put(STORAGE_KEY, seedling)
+
     } else {
 
         savedSeedling = await storageService.post(STORAGE_KEY, seedling)
     }
-    // const savedSeedling = await storageService.post(STORAGE_KEY, seedling)
+
     return savedSeedling
 }
 
+
 async function remove(seedlingId) {
+
     await storageService.remove(STORAGE_KEY, seedlingId)
 }
 
 
-
-
-
-// xxxx
+// xxxx requer dev multiply the sum or put ()
 async function sumThenMultiplySavedSeedlings() {
     var capacitySumResult = 0
     var amountSumResult = 0
@@ -88,16 +91,3 @@ async function sumThenMultiplySavedSeedlings() {
 }
 
 
-
-
-
-
-
-
-// function getEmptySeedling() {
-//     return {
-//         _id: storageService.makeId(),
-//         capacity: 0,
-//         amount: 0,
-//     }
-// }

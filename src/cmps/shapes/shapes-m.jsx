@@ -12,10 +12,12 @@ import { setFilterBy, updateShape, loadShapes, loadShape } from '../store/shape-
 import arrow from '../../assets/imgs/arrow.png'
 
 
+
+// Anecdotes:  data flow between ShapesM <--> Store <--> Service 
 export const ShapesM = () => {
 
     // shapesState preject shapes name, why not bring only names state?
-    const { shapes, shape } = useSelector(state => state.shapeModule) // globalState
+    const { shapes, shape } = useSelector(state => state.shapeModule) // globalState (from shape-reducer file)
     const dispatch = useDispatch()
 
     const [valueToUpdate, setValue] = useState({ depth: '', length: '', width: '', radius: '' })
@@ -24,32 +26,21 @@ export const ShapesM = () => {
 
 
     useEffect(() => {
+
         dispatch(loadShapes())
         if (shape?.length > 0) return
         dispatch(loadShape())
-        
 
     }, [])
 
-// use for Eq...
+    // use for render Eq, bring shape by Id after 'option' tag clicked ...
     const onLoadShape = async (shapeId) => {
-        dispatch(loadShape(shapeId))
 
-        // const shape = await shapesService.getById(shapeId)
-        // setShape(shape)
+        dispatch(loadShape(shapeId))
 
         if (shapeId) {
             // close option tags
             setSwitchHandle(false)
-
-            //     if (shapes.length > 0 && shapes.length === 1) {
-
-            //         shape = shapes[0]
-            //     }
-            // } else {
-            //     var filteredState = await shapes.find(shapeToFilter =>
-            //         shapeToFilter._id === shape._id)
-            //     shape = filteredState
         }
 
 
@@ -72,9 +63,8 @@ export const ShapesM = () => {
         dispatch(loadShapes())
 
         // open optin list when input (letter) added, else...
-        value.length > 0 ?
-            setSwitchHandle(true) :
-            setSwitchHandle(false)
+        value.length > 0 ? setSwitchHandle(true) : setSwitchHandle(false)
+
     }
 
 
@@ -86,7 +76,8 @@ export const ShapesM = () => {
         // console.log(shape._id);
         setValue({ depth: '', length: '', width: '', radius: '' })
 
-        // hide inputs when values updating  // tod :  function
+        //INLINE CSS --->
+        // hide inputs when values updating  
         const elements = document.getElementsByClassName('eq-inputs')
         const element = elements[0]
         if (element) {
@@ -98,7 +89,7 @@ export const ShapesM = () => {
 
         }
 
-        // reveal shape result tag after updating values // todo : function, text reveal transition
+        // reveal shape result tag after updating values // todo : text reveal transition
         const h3Tag = document.querySelector('.shape-result')
 
         if (h3Tag) {
@@ -110,6 +101,8 @@ export const ShapesM = () => {
         if (seedlingsNavTag) {
             seedlingsNavTag.style.visibility = 'visible'
         }
+        
+
     }
 
 

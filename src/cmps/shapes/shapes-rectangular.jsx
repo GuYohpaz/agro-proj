@@ -4,7 +4,6 @@
 export const ToRectangular = ({ rectangularEq, onUpdateValues, handleChange, valueToUpdate }) => {
     // console.log(valueToUpdate);
     return (
-        // <section>
         <form onSubmit={onUpdateValues} >
             <h3 className="shape-result">{rectangularEq?.capacity}</h3>
             <div className="eq-inputs">
@@ -16,7 +15,6 @@ export const ToRectangular = ({ rectangularEq, onUpdateValues, handleChange, val
 
 
         </form>
-        // </section>
     )
 
 }

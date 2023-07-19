@@ -14,11 +14,11 @@ export const storageService = {
 
 
 function query(entityType, delay = 0) {
-// jason.prase(reviver), convert json to js? 
+// jason.prase(reviver), convert json to js
     var entities = JSON.parse(localStorage.getItem(entityType))
   
     return new Promise((resolve, reject) => {
-        //todo:  setTimeOut(callBack, delay ), execute the resolved callBack once the timer expires..(delay = asyncReactionTime?)  
+        //  setTimeOut(callBack, delay ), execute the resolved callBack once the timer expires..(delay = asyncReactionTime?)  
         setTimeout(() => {
             resolve(entities)
         }, delay)
@@ -30,7 +30,6 @@ function query(entityType, delay = 0) {
 function get(entityType, entityId) {
     return query(entityType)
         .then(entities =>
-            // find and return entity arr
             entities.find(entity =>
                 entity._id === entityId))
 }
@@ -56,10 +55,10 @@ function put(entityType, updatedEntity) {
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-            // splice(idx, removeAmount, )
+            // splice(idx, removeAmount, ... )
             entities.splice(idx, 1, updatedEntity)
             _save(entityType, entities)
-            return updatedEntity // entities ?
+            return updatedEntity 
         })
 }
 
@@ -80,14 +79,12 @@ function remove(entityType, entityId) {
 function postMany(entityType, entities) {
     _save(entityType, entities)
     return Promise.resolve(entities)
-    // return ---> query functions 
 }
 
 
 function _save(entityType, entities) {
 
     // setItme(keyName, keyValue), toJson 
-    // console.log(entities);
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

@@ -10,12 +10,7 @@ export const bagService = {
     query,
     getCapacities,
     getBagsAmount
-    // getById, 
-    // update,
-    // save,
-    // changeBooleanMode,
-    // getByIsTrue
-    // getEmptyBag
+   
 }
 
 window.cs = bagService
@@ -41,46 +36,45 @@ async function query() {
             bags = bagsToConvert
         }
         
-
         return bags
 
     })
 }
 
-// GetCapacitiesThenSubtractIfNeeded
+// GetCapacitiesThenSubtractIfNeeded // args from Home page
 async function getCapacities(boolean) {
     // console.log(boolean);
     var totalCapacity=0
     const shapes = await shapesService.query()
-    // const seedlings = await seedlingService.sumThenMultiplySavedSeedlings()
-    // console.log('seedlingsC',seedlings);
-    // wahad delay for seedlingsC
+    // const seedlingsCapacity = await seedlingService.sumThenMultiplySavedSeedlings()
     
     // OnlyShapeCapacity
     if (boolean===false) {
   
-      const shapeTo= await shapes?.find(shape => shape.shapeEquation.capacity > 0 ? totalCapacity = shape.shapeEquation.capacity:null)
-    // console.log(shapeTo);
-    // console.log(totalCapacity);
+      const shapeTo= await shapes?.find(shape =>
+
+        shape.shapeEquation.capacity > 0 ?
+        totalCapacity = shape.shapeEquation.capacity:
+        null)
+
     getBagsAmount(totalCapacity)
 
-//get seedlings capacity from seedlings service  the subtract with shape capacity.
+    //get seedlings capacity from seedlings service  then  subtract with shape capacity.
+    // (await for user action to add seedlings and to calculate ther capacity )
     } else {
         
-  
         
     }
 
-    
 
 }
 
 async function getBagsAmount(totalCapacity) {
-    // console.log(totalCapacity);
-   const bags = await query()
-//    console.log(bags);
+
+const bags = await query()
+   
 bags.map(bag => {
-    // console.log(bag);
+
     if (bag.capacity <= totalCapacity) {
         bag.amount = totalCapacity / bag.capacity
         // console.log(bag.amount);
@@ -89,7 +83,7 @@ bags.map(bag => {
         bag.amount=== null// null ?
         console.log('Capacity To Small');
     }
-    // console.log(bags);
+
     storageService._save(STORAGE_KEY, bags)
     return bag.amount
     // didnt worked before beacuse i compared bag.amount to var, why? 

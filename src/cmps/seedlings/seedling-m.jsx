@@ -1,24 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect} from 'react'
-
+import { useState, useEffect } from 'react'
 
 import { seedlingService } from '../../services/seedling-service'
-import { addSeedling, removeSeedling, loadSeedlings, loadSeedling } from '../store/seedling-action'
 
+
+
+// Anecdotes:  data flow between SeedlingsM <--> Service 
 export const SeedlingsM = () => {
 
-    const dispatch = useDispatch()
 
     const [seedlings, setSeedlings] = useState([])
     const [seedlingValueToAdd, setSeedling] = useState({ capacity: '', amount: '' })
-
 
 
     useEffect(() => {
         loadSeedling()
     }, [seedlings])
 
-    // const get
     const loadSeedling = async () => {
         const seedlings = await seedlingService.query()
         setSeedlings(seedlings)
@@ -26,8 +23,7 @@ export const SeedlingsM = () => {
 
     const onAddSeedling = async (ev) => {
         ev.preventDefault()
-        dispatch(addSeedling(seedlingValueToAdd))
-        // dispatch(loadSeedlings())
+        const addedSeedling = await seedlingService.save(seedlingValueToAdd)
         setSeedling({ capacity: '', amount: '' })
     }
 
@@ -38,25 +34,23 @@ export const SeedlingsM = () => {
         setSeedling({ ...seedlingValueToAdd, [name]: value })
     }
 
-
+    // requer dev ---> if seedlings.length > 1 - when try to remove one seedling, the next one removed not him.
     const onRemoveSeedling = (seedlingId) => {
         // console.log(seedlingId);
-        // dispatch(removeSeedling({ _id: seedlingId }))
-        seedlingService.remove({_id: seedlingId})
+        seedlingService.remove({ _id: seedlingId })
     }
 
-const onCalculateAddedSeedling = async (ev) => {
-    ev.preventDefault()
-    seedlingService.sumThenMultiplySavedSeedlings()
-}
+    const onCalculateAddedSeedling = async (ev) => {
+        ev.preventDefault()
+        seedlingService.sumThenMultiplySavedSeedlings()
+    }
 
 
     // console.log(seedlingId);
-
     // console.log(seedlings);
     // console.log(seedlingValueToAdd);
-// console.log(seedlings);
-    //   if (seedlings===undefined) return <div>loading...</div>
+    // console.log(seedlings);
+
     return (
 
 
@@ -78,15 +72,14 @@ const onCalculateAddedSeedling = async (ev) => {
             </section>
 
             <h6>Added To Calculate:</h6>
+
             {seedlings.length > 0 && <ul className='flex row'>
                 {seedlings.map(seedling =>
-                    // if &&
                     seedling &&
                     <li className='flex column' key={seedling._id}>
                         <p onClick={() => { onRemoveSeedling(seedling._id) }} >x</p>
                         <pre>{seedling.capacity} Liter Seedling</pre>
                         <pre>{seedling.amount} Units</pre>
-                        {/* <button onClick={() => { onRemoveSeedling(seedling._id) }}>x</button> */}
 
                     </li>
 
@@ -94,6 +87,7 @@ const onCalculateAddedSeedling = async (ev) => {
             </ul>}
 
             <button onClick={onCalculateAddedSeedling}>Calculate</button>
+
         </form>
 
     )

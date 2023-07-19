@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { bagService } from '../../services/bag-service';
 
 
+
+// Anecdotes:  data flow between BagsM to service 
 export const BagsM = () => {
     const [bags, setBags] = useState([])
 

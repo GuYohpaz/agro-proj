@@ -42,6 +42,8 @@ async function query() {
 }
 
 // GetCapacitiesThenSubtractIfNeeded // args from Home page
+// use more indicative name for boolean -  what does this boolean true for example calcuateBags 
+//, and then if (calcuateBags) {....} else it will just arraive to the end of the function and return 
 async function getCapacities(boolean) {
     // console.log(boolean);
     var totalCapacity=0
@@ -50,13 +52,13 @@ async function getCapacities(boolean) {
     
     // OnlyShapeCapacity
     if (boolean===false) {
-  
+      //  use more indicative name for  shapeTo , and please can you explain why are you using the find? 
       const shapeTo= await shapes?.find(shape =>
 
         shape.shapeEquation.capacity > 0 ?
         totalCapacity = shape.shapeEquation.capacity:
         null)
-
+    // naming - i would name totalCapacity as shapeCapacity
     getBagsAmount(totalCapacity)
 
     //get seedlings capacity from seedlings service  then  subtract with shape capacity.
@@ -72,7 +74,9 @@ async function getCapacities(boolean) {
 async function getBagsAmount(totalCapacity) {
 
 const bags = await query()
-   
+  // maybe  add a bottom that asked - do you prefer small bags \ big bags and then you logic can be 
+    // if big bags are prefered then you try to put as much as you can in big bags , for exaple think about this senario - i have a capacity of 500
+    //, so every bag capacity < shapeCapacity . but if is it cheaper to bug big bags so the optimun is 2 bags of 250 each
 bags.map(bag => {
 
     if (bag.capacity <= totalCapacity) {
